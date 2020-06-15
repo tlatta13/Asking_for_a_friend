@@ -15,7 +15,7 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post('/api/signup', function(req, res) {
     db.User.create({
-      username: req.body.username, //change this to username
+      username: req.body.username,
       password: req.body.password
     })
       .then(function() {
@@ -28,10 +28,9 @@ module.exports = function(app) {
 
   // Post route for user questions
   app.post('/api/questions', function(req,res) {
-    db.QandA.create({
+    db.Questions.create({
       title: req.body.title,
-      question: req.body.question,
-      answer: req.body.answer
+      question: req.body.question
     })
       .then(function() {
         console.log(res.body);
@@ -60,7 +59,7 @@ module.exports = function(app) {
       // Otherwise send back the user's username and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
-        username: req.user.username, //change this to username
+        username: req.user.username,
         id: req.user.id
       });
     }
