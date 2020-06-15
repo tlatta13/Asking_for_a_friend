@@ -57,4 +57,26 @@ module.exports = function(app) {
       });
     }
   });
+
+  // Route for getting all questions
+  app.get('/api/all', function(req, res) {
+    QandA.findAll({}).then(function(results) {
+      res.json(results);
+    });
+  });
+
+  // Route to update answers
+  app.put('/api/questions', function(req, res) {
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.QandA.update({
+      answer: req.body.complete
+    }, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
 };
