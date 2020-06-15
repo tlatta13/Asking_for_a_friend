@@ -1,0 +1,24 @@
+{
+  "name": "Asking_for_a_friend",
+  "version": "1.0.0",
+  "description": "Project 2 Asking for a Friend. A question and answer app that allows users to post questions and others to respond.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egrenegar/Asking_for_a_friend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/egrenegar/Asking_for_a_friend/issues"
+  },
+  "homepage": "https://github.com/egrenegar/Asking_for_a_friend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4"
+  }
+}
