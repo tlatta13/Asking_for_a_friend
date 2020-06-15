@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(252, 236, 222);
+}
+
+body {
+    height: 100vh;
+}
+
+.tagline {
+    font-family: 'Diadict Gothic', sans-serif;
+}
+
+.card-content, .form-header {
+    /* font-family: 'Dosis', sans-serif; */
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 2rem;
+}
+
+#login, #sign-up {
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+#login:hover, #sign-up:hover {
+    text-transform: uppercase;
+}
+
+.placeholder-column {
+    padding: 0;
+}
