@@ -4,6 +4,14 @@ var path = require('path');
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require('../config/middleware/isAuthenticated');
 
+// const QandA = [
+//   { title: 'question title 1', question: 'question body 1', answer: null },
+//   { title: 'question title 2', question: 'question body 2', answer: null },
+//   { title: 'question title 3', question: 'question body 3', answer: null },
+//   { title: 'question title 4', question: 'question body 4', answer: null },
+//   { title: 'question title 5', question: 'question body 5', answer: null }
+// ]
+
 module.exports = function(app) {
 
   app.get('/', function(req, res) {
@@ -11,7 +19,7 @@ module.exports = function(app) {
     if (req.user) {
       return res.redirect('/questions'); //was originally members
     }
-    res.sendFile(path.join(__dirname, '../views/signup.handlebars'));
+    res.render('index');
   });
 
   app.get('/login', function(req, res) {
@@ -19,13 +27,17 @@ module.exports = function(app) {
     if (req.user) {
       return res.redirect('/questions');
     }
-    res.sendFile(path.join(__dirname, '../views/login.handlebars'));
+    res.render('login');
+  });
+
+  app.get('/signup', function(req, res) {
+    res.render('signup');
   });
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get('/questions', isAuthenticated, function(req, res) {
-    res.sendFile(path.join(__dirname, '../views/questions.handlebars'));
+    res.render('questions');
   });
 
   //isAuthenticated above is the middleware being inserted into just a specific route.
