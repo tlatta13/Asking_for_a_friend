@@ -15,7 +15,7 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post('/api/signup', function(req, res) {
     db.User.create({
-      username: req.body.username, //change this to username
+      username: req.body.username,
       password: req.body.password
     })
       .then(function() {
@@ -28,12 +28,12 @@ module.exports = function(app) {
 
   // Post route for user questions
   app.post('/api/questions', function(req,res) {
-    db.QandA.create({
-      question: req.body.question,
-      answer: req.body.answer
+    db.Questions.create({
+      title: req.body.title,
+      question: req.body.question
     })
       .then(function() {
-        Location.reload();
+        console.log(res.body);
       });
   });
 
@@ -41,6 +41,13 @@ module.exports = function(app) {
   app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
+  });
+
+  // Route for getting all questions
+  app.get('/api/all', function(req, res) {
+    QandA.findAll({}).then(function(results) {
+      res.json(results);
+    });
   });
 
   // Route for getting some data about our user to be used client side
@@ -52,7 +59,7 @@ module.exports = function(app) {
       // Otherwise send back the user's username and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
-        username: req.user.username, //change this to username
+        username: req.user.username,
         id: req.user.id
       });
     }

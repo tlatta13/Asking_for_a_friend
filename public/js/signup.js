@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  console.log("Hello");
   // Getting references to our form and input
   // These will change based on our html
   var signUpForm = $('form.signup');
@@ -30,7 +31,7 @@ $(document).ready(function() {
       password: password
     })
       .then(function(data) {
-        window.location.replace('/members');
+        window.location.replace('/questions');
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
