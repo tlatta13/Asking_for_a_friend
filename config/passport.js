@@ -1,13 +1,13 @@
-var passport = require("passport");
-var LocalStrategy = require("passport-local").Strategy;
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
-var db = require("../models");
+var db = require('../models');
 
 // Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
 passport.use(new LocalStrategy(
   // Our user will sign in using a username.
   {
-    usernameField: "username"
+    usernameField: 'username'
   },
   function(username, password, done) {
     // When a user tries to sign in this code runs
@@ -19,13 +19,12 @@ passport.use(new LocalStrategy(
       // If there's no user with the given username
       if (!dbUser) {
         return done(null, false, {
-          message: "Incorrect username."
+          message: 'Incorrect username.'
         });
-      }
-      // If there is a user with the given username, but the password the user gives us is incorrect
-      else if (!dbUser.validPassword(password)) {
+      } else if (!dbUser.validPassword(password)) {
+        // If there is a user with the given username, but the password the user gives us is incorrect
         return done(null, false, {
-          message: "Incorrect password."
+          message: 'Incorrect password.'
         });
       }
       // If none of the above, return the user
