@@ -4,7 +4,8 @@
   "description": "Project 2 Asking for a Friend. A question and answer app that allows users to post questions and others to respond.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "exit 0",
+    "fix": "eslint **/*.js --fix"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/egrenegar/Asking_for_a_friend#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "eslint": "^7.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
     "express-session": "^1.17.1",
