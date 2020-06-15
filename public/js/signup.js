@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  console.log("Hello");
   // Getting references to our form and input
   // These will change based on our html
   var signUpForm = $('form.signup');
