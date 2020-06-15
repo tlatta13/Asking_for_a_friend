@@ -28,7 +28,7 @@ module.exports = function(app) {
 
   // Post route for user questions
   app.post('/api/questions', function(req,res) {
-    db.Question.create({
+    db.QandA.create({
       question: req.body.question,
       answer: req.body.answer
     })
@@ -57,6 +57,4 @@ module.exports = function(app) {
       });
     }
   });
-
-
 };

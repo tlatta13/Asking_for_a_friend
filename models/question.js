@@ -1,17 +1,16 @@
-// Creating our User model
+// Creating our QandA model
 module.exports = function(sequelize, DataTypes) {
   var QandA = sequelize.define('QandA', {
-    // The username cannot be null
+    // The question must be a string and not null
     question: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // The password cannot be null
+    // The answer must be a string and can be null.
     answer: {
       type: DataTypes.STRING,
       allowNull: true
     }
   });
-  // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   return QandA;
 };

@@ -7,7 +7,7 @@ var db = require('../models');
 passport.use(new LocalStrategy(
   // Our user will sign in using a username.
   {
-    usernameField: 'username'
+    usernameField: 'username' //login.html in previous file is where this is related.
   },
   function(username, password, done) {
     // When a user tries to sign in this code runs
@@ -17,14 +17,9 @@ passport.use(new LocalStrategy(
       }
     }).then(function(dbUser) {
       // If there's no user with the given username
-      if (!dbUser) {
+      if (!dbUser || !dbUser.validPassword(password)) {
         return done(null, false, {
-          message: 'Incorrect username.'
-        });
-      } else if (!dbUser.validPassword(password)) {
-        // If there is a user with the given username, but the password the user gives us is incorrect
-        return done(null, false, {
-          message: 'Incorrect password.'
+          message: 'Incorrect username or password.'
         });
       }
       // If none of the above, return the user

@@ -8,3 +8,5 @@ module.exports = function(req, res, next) {
   // If the user isn't logged in, redirect them to the login page
   return res.redirect('/');
 };
+//was initially return res.redirect('/'). This is the location you are redirected to
+//if you are not logged in. Right now its to the root. Can change it to the login page...
