@@ -9,7 +9,7 @@ module.exports = function(app) {
   app.get('/', function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.redirect('/questions');
+      return res.redirect('/questions'); //was originally members
     }
     res.sendFile(path.join(__dirname, '../views/signup.handlebars'));
   });
@@ -17,7 +17,7 @@ module.exports = function(app) {
   app.get('/login', function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.redirect('/questions');
+      return res.redirect('/questions');
     }
     res.sendFile(path.join(__dirname, '../views/login.handlebars'));
   });
@@ -28,5 +28,6 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, '../views/questions.handlebars'));
   });
 
-
+  //isAuthenticated above is the middleware being inserted into just a specific route.
+  //On line 27, it is checking to see if the user is authenticated before sending back the questions page.
 };
