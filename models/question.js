@@ -2,6 +2,10 @@
 module.exports = function(sequelize, DataTypes) {
   var QandA = sequelize.define('QandA', {
     // The question must be a string and not null
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     question: {
       type: DataTypes.STRING,
       allowNull: false,
