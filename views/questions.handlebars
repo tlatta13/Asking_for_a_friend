@@ -33,6 +33,7 @@
 <section class="section">
   <div class="columns">
     <div class="column is-4">
+      <!--Ask New Question -->
       <article class="panel">
         <p class="panel-heading">
           Ask a new Question!
@@ -71,7 +72,7 @@
           {{#each questions}}
           <li>
             {{!-- {{#unless answer}} --}}
-            <a class="panel-block">
+            <a class="panel-block" data-id="{{ id }}">
               <span class="panel-icon">
                 <i class="fas fa-question" aria-hidden="true"></i>
               </span>
@@ -104,7 +105,7 @@
           </p>
         </div>
         {{#each Questions}}
-        <a class="panel-block is-active">
+        <a class="panel-block is-active" data-id="{{ id }}">
           <span class="panel-icon">
             <i class="fas fa-question" aria-hidden="true"></i>
           </span>
@@ -112,11 +113,11 @@
         {{/each}}
       </article>
     </div>
-    <!--Display the clicked question and answer form-->
+    <!--Display the clicked question/answer form-->
     <div class="column is-8">
       <div class="box">
         <div id="display-question">
-          <h3 id="display-question-title">Question Title</h3>
+          <h3 id="display-question-title"></h3>
           <div class="content">
             <p id="display-question-body">
               Question body. Lorem ipsum dolor sit amet
@@ -149,10 +150,6 @@
             <input class="button" type="submit" value="Submit">
           </div>
         </form>
-        <hr>
-        <div class="content">
-          <p>Or ask a new question <a href="/ask">here.</a></p>
-        </div>
       </div>
     </div>
   </div>
