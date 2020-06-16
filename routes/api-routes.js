@@ -29,7 +29,7 @@ module.exports = function(app) {
   // Post route for user questions
   app.post('/api/questions', function(req,res) {
     console.log(res.body);
-    db.Questions.create({
+    db.Question.create({
       title: req.body.title,
       question: req.body.question
     }).then(function(result) {
