@@ -3,7 +3,9 @@ var express = require('express');
 var session = require('express-session');
 // Requiring passport as we've configured it
 var passport = require('./config/passport');
+var Handlebars = require('handlebars');
 var exphbs = require('express-handlebars');
+var { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
@@ -20,7 +22,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Set Handlebars as the default templating engine.
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.engine('handlebars', exphbs({
+  handlebars: allowInsecurePrototypeAccess(Handlebars),
+  defaultLayout: 'main' }
+));
 app.set('view engine', 'handlebars');
 
 // Requiring our routes
