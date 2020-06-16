@@ -1,16 +1,23 @@
 body {
     background-color: rgb(252, 236, 222);
+    height: 100vh;
 }
 
-body {
-    height: 100vh;
+#body-container {
+    background-color: rgb(252, 236, 222);
 }
 
 .tagline {
     font-family: 'Diadict Gothic', sans-serif;
 }
 
-.card-content, .form-header {
+.card-content,
+.form-header,
+.panel-heading,
+#display-question-title,
+#answers-heading,
+#answer-form-heading,
+#ask-question {
     font-family: 'Patrick Hand', sans-serif;
     font-size: 2rem;
 }
@@ -25,4 +32,8 @@ body {
 
 .placeholder-column {
     padding: 0;
+}
+
+.panel-block, .panel-tabs {
+    background-color: white;
 }
