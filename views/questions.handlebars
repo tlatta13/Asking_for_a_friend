@@ -77,14 +77,12 @@
           </p>
         </div>
         {{#each Questions}}
-        {{#unless answer}}
         <a class="panel-block">
           <span class="panel-icon">
             <i class="fas fa-question" aria-hidden="true"></i>
           </span>
           {{ question }}
         </a>
-        {{/unless}}
         {{/each}}
       </article>
 
@@ -109,13 +107,11 @@
           </p>
         </div>
         {{#each Questions}}
-        {{#if answer}}
         <a class="panel-block is-active">
           <span class="panel-icon">
             <i class="fas fa-question" aria-hidden="true"></i>
           </span>
         </a>
-        {{/if}}
         {{/each}}
       </article>
     </div>
