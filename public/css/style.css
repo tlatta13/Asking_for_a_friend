@@ -3,7 +3,7 @@ body {
     height: 100vh;
 }
 
-#backgroundwork {
+#body-container {
     background-color: rgb(252, 236, 222);
 }
 
@@ -12,8 +12,13 @@ body {
     font-family: 'Diadict Gothic', sans-serif;
 }
 
-.card-content, .form-header {
-    /* font-family: 'Dosis', sans-serif; */
+.card-content,
+.form-header,
+.panel-heading,
+#display-question-title,
+#answers-heading,
+#answer-form-heading,
+#ask-question {
     font-family: 'Patrick Hand', sans-serif;
     font-size: 2rem;
 }
@@ -28,4 +33,8 @@ body {
 
 .placeholder-column {
     padding: 0;
+}
+
+.panel-block, .panel-tabs {
+    background-color: white;
 }

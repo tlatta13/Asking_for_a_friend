@@ -1,0 +1,156 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="./index.html">
+      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="./index.html">
+        Home
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            About
+          </a>
+          <a class="navbar-item">
+            Jobs
+          </a>
+          <a class="navbar-item">
+            Contact
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<!--Navbar End-->
+<section class="section">
+  <div class="columns">
+    <div class="column is-4">
+      <div class="box">
+        <a id="ask-question" href="/ask">Ask a new question!</a>
+      </div>
+      <!--Unanswered Questions-->
+      <article class="panel">
+        <p class="panel-heading">
+          Unanswered Questions
+        </p>
+        <p class="panel-tabs">
+          <a class="is-active">All</a>
+          <a>Tech</a>
+          <a>Pop Culture</a>
+          <a>Automotive</a>
+          <a>Health/Nutrition</a>
+        </p>
+        <div class="panel-block">
+          <p class="control has-icons-left">
+            <input class="input is-primary" type="text" placeholder="Keyword">
+            <span class="icon is-left">
+              <i class="fas fa-search" aria-hidden="true"></i>
+            </span>
+          </p>
+        </div>
+        {{#each Questions}}
+        {{#unless answer}}
+        <a class="panel-block">
+          <span class="panel-icon">
+            <i class="fas fa-question" aria-hidden="true"></i>
+          </span>
+          {{ question }}
+        </a>
+        {{/unless}}
+        {{/each}}
+      </article>
+
+      <!--Answered Questions-->
+      <article class="panel">
+        <p class="panel-heading">
+          Answered Questions
+        </p>
+        <p class="panel-tabs">
+          <a class="is-active">All</a>
+          <a>Tech</a>
+          <a>Pop Culture</a>
+          <a>Automotive</a>
+          <a>Health/Nutrition</a>
+        </p>
+        <div class="panel-block">
+          <p class="control has-icons-left">
+            <input class="input is-link" type="text" placeholder="Keyword">
+            <span class="icon is-left">
+              <i class="fas fa-search" aria-hidden="true"></i>
+            </span>
+          </p>
+        </div>
+        {{#each Questions}}
+        {{#if answer}}
+        <a class="panel-block is-active">
+          <span class="panel-icon">
+            <i class="fas fa-question" aria-hidden="true"></i>
+          </span>
+          question 1
+        </a>
+        {{/if}}
+        {{/each}}
+      </article>
+    </div>
+    <!--Display the clicked question and answer form-->
+    <div class="column is-8">
+      <div class="box">
+        <div id="display-question">
+          <h3 id="display-question-title">Question Title</h3>
+          <div class="content">
+            <p id="display-question-body">
+              Question body. Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Neque officia illum ad id laborum optio magnam
+              nostrum,
+              minima necessitatibus provident odio culpa facilis dolorem consectetur eius vero
+              facere
+              debitis assumenda.
+            </p>
+          </div>
+
+        </div>
+        <hr>
+        <div>
+          <h3 id="answers-heading">Answers</h3>
+          <div class="content">
+            <ol>
+              <li>
+                Answer
+              </li>
+            </ol>
+          </div>
+        </div>
+        <hr>
+        <h3 id="answer-form-heading">Answer This Question</h3>
+        <form action="">
+          <div class="control">
+            <textarea class="textarea mb-2" placeholder="Enter your answer here" rows="8">
+            </textarea>
+            <input class="button" type="submit" value="Submit">
+          </div>
+        </form>
+        <hr>
+        <div class="content">
+          <p>Or ask a new question <a href="/ask">here.</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -40,19 +40,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="navbar-end">
-            <div class="navbar-item">
-                <div class="buttons">
-                    <a class="button is-primary">
-                        <strong>Sign up</strong>
-                    </a>
-                    <a class="button is-light">
-                        Log in
-                    </a>
-                </div>
-            </div>
-        </div>
     </div>
 </nav>
 <!--End navigation-->
@@ -64,13 +51,13 @@
                 <div id="form-container" class="box">
                     <p class="content form-header">Welcome back!</p>
                     <!--Login form starts here-->
-                    <form action="">
+                    <form action="" class="login">
                         <div class="field">
                             <label class="label">
                                 Username
                             </label>
                             <div class="control has-icons-left">
-                                <input class="input is-success" type="text" placeholder="Enter username" value="">
+                                <input class="input is-success" type="text" placeholder="Enter username" value="" id="username-input">
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-user"></i>
                                 </span>
@@ -80,7 +67,7 @@
                             <label class="label" for="password">
                                 Password
                             </label>
-                            <input type="password" class="input" placeholder="Enter password">
+                            <input type="password" class="input" placeholder="Enter password" id="password-input">
                         </div>
                         <button class="button is-success">Log In</button>
                     </form>
