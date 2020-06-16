@@ -28,7 +28,6 @@ module.exports = function(app) {
 
   // Post route for user questions
   app.post('/api/questions', function(req,res) {
-    console.log(res.body);
     db.Question.create({
       title: req.body.title,
       question: req.body.question
@@ -72,7 +71,7 @@ module.exports = function(app) {
 
   // Route for getting all questions
   app.get('/api/all', function(req, res) {
-    Questions.findAll({}).then(function(results) {
+    db.Question.findAll({}).then(function(results) {
       res.json(results);
     });
   });
