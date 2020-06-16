@@ -77,12 +77,11 @@
             </span>
           </p>
         </div>
-<<<<<<< HEAD
         <ul>
           {{#each questions}}
           <li>
             {{!-- {{#unless answer}} --}}
-            <a class="panel-block">
+            <a class="panel-block" data-id="{{ id }}">
               <span class="panel-icon">
                 <i class="fas fa-question" aria-hidden="true"></i>
               </span>
@@ -92,16 +91,6 @@
           </li>
           {{/each}}
         </ul>
-=======
-        {{#each Questions}}
-        <a class="panel-block">
-          <span class="panel-icon">
-            <i class="fas fa-question" aria-hidden="true"></i>
-          </span>
-          {{ question }}
-        </a>
-        {{/each}}
->>>>>>> 01366026b7818d043fc58b8840c0b561253bc68f
       </article>
 
       <!--Answered Questions-->
@@ -125,7 +114,7 @@
           </p>
         </div>
         {{#each Questions}}
-        <a class="panel-block is-active">
+        <a class="panel-block is-active" data-id="{{ id }}>
           <span class="panel-icon">
             <i class="fas fa-question" aria-hidden="true"></i>
           </span>
@@ -133,11 +122,11 @@
         {{/each}}
       </article>
     </div>
-    <!--Display the clicked question and answer form-->
+    <!--Display the clicked question/answer form-->
     <div class="column is-8">
       <div class="box">
         <div id="display-question">
-          <h3 id="display-question-title">Question Title</h3>
+          <h3 id="display-question-title"></h3>
           <div class="content">
             <p id="display-question-body">
               Question body. Lorem ipsum dolor sit amet
