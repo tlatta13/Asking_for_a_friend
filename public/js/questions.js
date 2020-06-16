@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $('#question-form').on('submit', function(event) {
+  $('#question-form').on('click', function(event) {
     event.preventDefault();
     var newQuestion = {
       title: $('#title-input').val().trim(),
@@ -10,12 +10,9 @@ $(document).ready(function() {
     // Does a post to the question route.
     $.post('/api/questions', newQuestion)
       .then(function() {
-        console.log('New question added');
+        alert('New question added');
         location.reload();
       });
-
-    $('#title-input').val('');
-    $('#question-input').val('');
   });
 
   $('#answer-update').on('click', function(event) {
