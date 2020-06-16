@@ -43,3 +43,5 @@ module.exports = function(app) {
   //isAuthenticated above is the middleware being inserted into just a specific route.
   //On line 27, it is checking to see if the user is authenticated before sending back the questions page.
 };
+
+

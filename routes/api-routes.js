@@ -37,6 +37,18 @@ module.exports = function(app) {
     });
   });
 
+  app.post('/api/questions/:id/answers', function(req, res) {
+    // create an Answer and associate it to question with id of req.params.id
+    db.Answer.create({
+      answer: req.body.text,
+      QuestionId: req.params.id
+    }).then(createdAnswer => {
+      res.json(createdAnswer);
+    }).catch(err => {
+      res.status(500).json(err);
+    });
+  });
+
   // Route for logging user out
   app.get('/logout', function(req, res) {
     req.logout();
@@ -62,21 +74,6 @@ module.exports = function(app) {
   app.get('/api/all', function(req, res) {
     Questions.findAll({}).then(function(results) {
       res.json(results);
-    });
-  });
-
-  // Route to update answers
-  app.put('/api/questions', function(req, res) {
-    // Update takes in an object describing the properties we want to update, and
-    // we use where to describe which objects we want to update
-    db.Answers.update({
-      answer: req.body.complete
-    }, {
-      where: {
-        id: req.body.id
-      }
-    }).then(function(result) {
-      res.json(result);
     });
   });
 };
