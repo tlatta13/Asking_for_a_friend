@@ -14,13 +14,12 @@ $(document).ready(function() {
       });
   });
 
-  $('#answer-update').on('click', function(event) {
+  $('#answer-add').on('click', function(event) {
     event.preventDefault();
     var newAnswer = {
       answer: $('#answer-input').val().trim()
     };
-
-    $.post('/api/questions/:id/answer', newAnswer)
+    $.post('/api/questions/:id/answers', newAnswer)
       .then(function() {
         console.log('New answer submitted');
         location.reload();

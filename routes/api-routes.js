@@ -36,6 +36,14 @@ module.exports = function(app) {
     });
   });
 
+  // app.post('/api/answers', function(req,res) {
+  //   db.Answer.create({
+  //     answer: req.body.answer
+  //   }).then(function(result) {
+  //     res.json(result);
+  //   });
+  // });
+
   app.post('/api/questions/:id/answers', function(req, res) {
     // create an Answer and associate it to question with id of req.params.id
     db.Answer.create({
@@ -75,4 +83,6 @@ module.exports = function(app) {
       res.json(results);
     });
   });
+
 };
+
