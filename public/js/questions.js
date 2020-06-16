@@ -20,7 +20,6 @@ $(document).ready(function() {
     var newAnswer = {
       answer: $('#answer-input').val().trim()
     };
-
     $.post('/api/questions/:id/answers', newAnswer)
       .then(function() {
         console.log('New answer submitted');
