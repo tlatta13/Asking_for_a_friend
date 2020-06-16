@@ -13,7 +13,8 @@ $(document).ready(function() {
       password: passwordInput.val().trim()
     };
 
-    if (!userData.username || !userData.password) { //change to username
+    if (!userData.username || !userData.password) {
+      alert('Must input a username and password!'); //change to username
       return;
     }
     // If we have an username and password, run the signUpUser function
