@@ -28,26 +28,19 @@ module.exports = function(app) {
 
   // Post route for user questions
   app.post('/api/questions', function(req,res) {
+    console.log(res.body);
     db.Questions.create({
       title: req.body.title,
       question: req.body.question
-    })
-      .then(function() {
-        console.log(res.body);
-      });
+    }).then(function(result) {
+      res.json(result);
+    });
   });
 
   // Route for logging user out
   app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
-  });
-
-  // Route for getting all questions
-  app.get('/api/all', function(req, res) {
-    QandA.findAll({}).then(function(results) {
-      res.json(results);
-    });
   });
 
   // Route for getting some data about our user to be used client side
@@ -67,7 +60,7 @@ module.exports = function(app) {
 
   // Route for getting all questions
   app.get('/api/all', function(req, res) {
-    QandA.findAll({}).then(function(results) {
+    Questions.findAll({}).then(function(results) {
       res.json(results);
     });
   });
@@ -76,7 +69,7 @@ module.exports = function(app) {
   app.put('/api/questions', function(req, res) {
     // Update takes in an object describing the properties we want to update, and
     // we use where to describe which objects we want to update
-    db.QandA.update({
+    db.Answers.update({
       answer: req.body.complete
     }, {
       where: {

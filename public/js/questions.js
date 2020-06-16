@@ -1,27 +1,24 @@
 $(document).ready(function() {
-  
-    
-    $('#question-form').on('submit', function(event) {
-        event.preventDefault();
-        var newQuestion = {
-        question: $('#question-input').val().trim(), //change this to username
-        category: $('#category-input').val().trim()
-        };
 
-        // Does a post to the question route.
-        $.post('/api/questions', newQuestion)
-            .then(function() {
-            console.log('New question added');
-            location.reload();
-            // If there's an error, handle it by throwing up a bootstrap alert
-        });
+  $('#question-form').on('submit', function(event) {
+    event.preventDefault();
+    var newQuestion = {
+      title: $('#title-input').val().trim(),
+      question: $('#question-input').val().trim()
+    };
 
-        $('#question-input').val('');
-        $('#category-input').val('');
-    });
+    // Does a post to the question route.
+    $.post('/api/questions', newQuestion)
+      .then(function() {
+        console.log('New question added');
+        location.reload();
+      });
 
-    $('#answer-update').on('click', function(event) {
-        event.preventDefault();
-    })
-    
+    $('title-input').val().trim();
+    $('#question-input').val('');
+  });
+
+  $('#answer-update').on('click', function(event) {
+    event.preventDefault();
+  });
 });
