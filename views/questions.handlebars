@@ -76,16 +76,20 @@
             </span>
           </p>
         </div>
-        {{#each Questions}}
-        {{#unless answer}}
-        <a class="panel-block">
-          <span class="panel-icon">
-            <i class="fas fa-question" aria-hidden="true"></i>
-          </span>
-          {{ question }}
-        </a>
-        {{/unless}}
-        {{/each}}
+        <ul>
+          {{#each questions}}
+          <li>
+            {{!-- {{#unless answer}} --}}
+            <a class="panel-block">
+              <span class="panel-icon">
+                <i class="fas fa-question" aria-hidden="true"></i>
+              </span>
+              {{ title }}
+            </a>
+            {{!-- {{/unless}} --}}
+          </li>
+          {{/each}}
+        </ul>
       </article>
 
       <!--Answered Questions-->
