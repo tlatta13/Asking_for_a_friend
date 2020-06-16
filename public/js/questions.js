@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  $(window).on( 'load', function() {
+
+  });
+
   $('#question-form').on('click', function(event) {
     event.preventDefault();
     var newQuestion = {
@@ -16,10 +20,11 @@ $(document).ready(function() {
 
   $('#answer-add').on('click', function(event) {
     event.preventDefault();
+    var id = $(this).data('id');
     var newAnswer = {
       answer: $('#answer-input').val().trim()
     };
-    $.post('/api/questions/:id/answers', newAnswer)
+    $.post('/api/questions/' + id + '/answers', newAnswer)
       .then(function() {
         console.log('New answer submitted');
         location.reload();
@@ -31,6 +36,9 @@ $(document).ready(function() {
     var id = $(this).data('id');
     var $title = $('#display-question-title');
     var $content = $('#display-question-content');
+    // add an data-id attribute to the submit button in the answer form
+    var answerId = $('#answer-add').attr('data-id', id);
+    console.log(answerId);
 
     $.get('/api/all')
       .then(function(questions) {

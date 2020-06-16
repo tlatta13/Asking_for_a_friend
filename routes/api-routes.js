@@ -47,7 +47,9 @@ module.exports = function(app) {
   app.post('/api/questions/:id/answers', function(req, res) {
     // create an Answer and associate it to question with id of req.params.id
     db.Answer.create({
-      answer: req.body.text,
+      // doesn't req.body.text this need to be req.body.answer?
+      // Do we need to add QuestionId to the Answer model?
+      answer: req.body.answer,
       QuestionId: req.params.id
     }).then(createdAnswer => {
       res.json(createdAnswer);
