@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   Question.associate = function(model){
-    Question.hasMany(model.Answer,{});
+    Question.hasMany(model.Answer);
   };
   return Question;
 };
