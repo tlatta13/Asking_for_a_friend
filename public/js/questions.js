@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
   $('#question-form').on('click', function(event) {
     event.preventDefault();
     var newQuestion = {
@@ -24,6 +23,23 @@ $(document).ready(function() {
       .then(function() {
         console.log('New answer submitted');
         location.reload();
+      });
+  });
+
+  $('.panel-block').on('click', function(event) {
+    event.preventDefault();
+    var id = $(this).data('id');
+    var $title = $('#display-question-title');
+    var $content = $('#display-question-content');
+
+    $.get('/api/all')
+      .then(function(questions) {
+        for (let i = 0; i < questions.length; i++) {
+          if (questions[i].id === id) {
+            $title.text(questions[i].title);
+            $content.text(questions[i].question);
+          }
+        }
       });
   });
 });
