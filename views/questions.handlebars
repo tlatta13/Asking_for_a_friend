@@ -76,6 +76,7 @@
             </span>
           </p>
         </div>
+<<<<<<< HEAD
         <ul>
           {{#each questions}}
           <li>
@@ -90,6 +91,16 @@
           </li>
           {{/each}}
         </ul>
+=======
+        {{#each Questions}}
+        <a class="panel-block">
+          <span class="panel-icon">
+            <i class="fas fa-question" aria-hidden="true"></i>
+          </span>
+          {{ question }}
+        </a>
+        {{/each}}
+>>>>>>> 01366026b7818d043fc58b8840c0b561253bc68f
       </article>
 
       <!--Answered Questions-->
@@ -113,13 +124,11 @@
           </p>
         </div>
         {{#each Questions}}
-        {{#if answer}}
         <a class="panel-block is-active">
           <span class="panel-icon">
             <i class="fas fa-question" aria-hidden="true"></i>
           </span>
         </a>
-        {{/if}}
         {{/each}}
       </article>
     </div>
