@@ -1,8 +1,23 @@
+//const db = require('../../models');
+
 $(document).ready(function () {
   // going to write code here to render question to main body
   // $(window).on( 'load', function() {
 
   // });
+  answerShower = function() {
+    $.get('/api/questions/' + 1 +'/answers')
+      .then(function(questions){
+        let lastQuestion = questions[questions.length-1].Answers;
+        console.log(lastQuestion);
+        let lastAnswer = lastQuestion[lastQuestion.length-1].answer;
+        console.log(lastAnswer);
+        let newPTag = $('<p>').text(lastAnswer);
+        $('#answer-list').append(newPTag);
+      });
+  };
+
+  
 
   $('#question-form').on('click', function (event) {
     event.preventDefault();
@@ -16,14 +31,17 @@ $(document).ready(function () {
       .then(function () {
         alert('New question added');
         location.reload();
+      })
+      .catch(function(err) {
+        console.log(err);
       });
   });
 
   $('#answer-add').on('click', function (event) {
-    console.log(this);
+    //console.log(this);
     var dataId = $(this).attr('data-id');
     var id = (typeof dataId === 'undefined') ? 1 : dataId; //this was originally just ----var id = $(this).attr('data-id');
-    console.log(id);
+    //console.log(id);
     event.preventDefault();
     var newAnswer = {
       answer: $('#answer-input').val().trim()
@@ -32,7 +50,7 @@ $(document).ready(function () {
       .then(function (response) {
         console.log(response);
         // create a new <li> and append it to the <ol> in questions.handlebars
-        var newAnswer = $('<li>' + response.answer + '</li>');
+        var newAnswer = $('<li id="remove-num">' + response.answer + '</li>');
         $('#answer-list').append(newAnswer);
         $('#answer-input').val('');
       });
@@ -59,5 +77,16 @@ $(document).ready(function () {
           }
         }
       });
+    $.get('/api/questions/' + id +'/answers')
+      .then(function(questions){
+        let lastQuestion = questions[questions.length-1].Answers;
+        console.log(lastQuestion);
+        let lastAnswer = lastQuestion.slice(-5);
+        lastAnswer.forEach((answer)=> {
+          let newPTag = $('<p>').text(answer.answer);
+          $('#answer-list').append(newPTag);
+        });
+      });
   });
 });
+
