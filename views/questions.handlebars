@@ -4,15 +4,14 @@
       <img src="/assets/img/AskingForAFriend_Nav.png" width="175" height="75">
     </a>
   </div>
-
-  <div class="navbar-start">
-    <a class="navbar-item" href="/index">Home</a>
-  </div>
-  <!--Log Out Button-->
-  <div class="navbar-end">
-    <div class="navbar-item">
-      <div class="buttons">
-        <a class="button is-light" href="/logout">Log Out</a>
+  <div class="navbar-menu"></div>
+    <!--Log Out Button-->
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-light" href="/index">Home</a>
+          <a class="button is-light" href="/logout">Log Out</a>
+        </div>
       </div>
     </div>
   </div>
@@ -49,18 +48,18 @@
           <a>Health/Nutrition</a>
         </p>
         <ul>
-          {{#each questions}}
+        {{#each questions}}
+        {{#unless answer}}
           <li>
-            {{!-- {{#unless answer}} --}}
             <a class="panel-block" data-id="{{ id }}">
               <span class="panel-icon">
                 <i class="fas fa-question" aria-hidden="true"></i>
               </span>
               {{ title }}
             </a>
-            {{!-- {{/unless}} --}}
           </li>
-          {{/each}}
+        {{/unless}}
+        {{/each}}
         </ul>
       </article>
       <!--Answered Questions-->
@@ -75,13 +74,20 @@
           <a>Automotive</a>
           <a>Health/Nutrition</a>
         </p>
-        {{#each Questions}}
-        <a class="panel-block" data-id="{{ id }}">
-          <span class="panel-icon">
-            <i class="fas fa-question" aria-hidden="true"></i>
-          </span>
-        </a>
+        <ul>
+        {{#each questions}}
+        {{!-- {{#if answer}} --}}
+          <li>
+            <a class="panel-block" data-id="{{ id }}">
+              <span class="panel-icon">
+                <i class="fas fa-question" aria-hidden="true"></i>
+              </span>
+              {{ title }}
+            </a>
+          </li>
+        {{!-- {{/if}} --}}
         {{/each}}
+        </ul>
       </article>
     </div>
     <!--Display the clicked question-->
