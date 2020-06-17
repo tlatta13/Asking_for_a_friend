@@ -85,13 +85,17 @@ module.exports = function (app) {
   });
 
   // Route for rendering most recent questions to the questions page
-  // app.get('/api/question', function (req, res) {
-  //   Questions.findAll({
-  //     where: {
-  //       createdAt: idk// Can use a range here? As seen in sequelize docs that Jeff sent.
-  //     }
-  //   }).then(function (result) {
-  //     return res.json(result);
-  //   });
-  // });
+//   app.get('/api/question', function (req, res) {
+//     var currentTime = Date.now();
+//     console.log(currentTime);
+//     Questions.findAll({
+//       where: {
+//         createdAt: {
+//           $between: []
+//         }
+//       }
+//     }).then(function (result) {
+//       return res.json(result);
+//     });
+//   });
 };
