@@ -84,12 +84,6 @@ module.exports = function (app) {
     });
   });
 
-  app.get('/api/users', function (req, res) {
-    db.User.findAll({}).then(function (results) {
-      res.json(results);
-    });
-  });
-
   // Route for rendering most recent questions to the questions page
   //   app.get('/api/question', function (req, res) {
   //     var currentTime = Date.now();
