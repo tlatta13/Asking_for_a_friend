@@ -35,7 +35,7 @@ $(document).ready(function() {
   });
 
   // When a question is clicked from the "Unanswered Questions" or "Answered Questions" panels
-  $('.panel-block').on('click', function(event) {
+  $('a.panel-block').on('click', function(event) {
     event.preventDefault();
     // remove the <li>s from the <ol> in "Answers"
     $('#answer-list').empty();
