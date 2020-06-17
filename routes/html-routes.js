@@ -4,6 +4,7 @@ var path = require('path');
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require('../config/middleware/isAuthenticated');
 const db = require('../models');
+const answer = require('../models/answer');
 
 // const QandA = [
 //   { title: 'question title 1', question: 'question body 1', answer: null },
@@ -47,6 +48,15 @@ module.exports = function(app) {
         res.render('questions', { questions: questions });
       });
   });
+
+  // app.get('/questions', isAuthenticated, function(req,res) {
+  //   db.Answer.findAll({where: {QuestionId:{
+  //     [Op.eq]: 2
+  //   }}})
+  //     .then(answers => {
+  //       res.render('questions', { answers: answers });
+  //     });
+  // });
 
   //isAuthenticated above is the middleware being inserted into just a specific route.
   //On line 27, it is checking to see if the user is authenticated before sending back the questions page.
