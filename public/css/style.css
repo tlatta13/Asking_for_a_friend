@@ -38,3 +38,8 @@ body {
 .panel-block, .panel-tabs {
     background-color: white;
 }
+
+#alert {
+    color: red;
+    font-family: 'Didact Gothic', sans-serif;
+}
