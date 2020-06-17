@@ -1,7 +1,8 @@
 $(document).ready(function() {
-  $(window).on( 'load', function() {
+  // going to write code here to render question to main body
+  // $(window).on( 'load', function() {
 
-  });
+  // });
 
   $('#question-form').on('click', function(event) {
     event.preventDefault();
