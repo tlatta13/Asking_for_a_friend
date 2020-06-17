@@ -7,9 +7,9 @@ body {
     background-color: rgb(252, 236, 222);
 }
 
-
 .tagline {
-    font-family: 'Diadict Gothic', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
 }
 
 .card-content,
@@ -23,18 +23,32 @@ body {
     font-size: 2rem;
 }
 
-#login, #sign-up {
-    font-family: 'Didact Gothic', sans-serif;
+#login,
+#sign-up {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
 }
 
-#login:hover, #sign-up:hover {
-    text-transform: uppercase;
+#login:hover,
+#sign-up:hover {
+    font-weight: 600;
 }
 
 .placeholder-column {
     padding: 0;
 }
 
-.panel-block, .panel-tabs {
+.panel-block {
     background-color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+}
+
+.panel-tabs {
+    background-color: white;
+}
+
+#answer-list {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
 }
