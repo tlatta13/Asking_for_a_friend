@@ -1,10 +1,10 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // going to write code here to render question to main body
   // $(window).on( 'load', function() {
 
   // });
 
-  $('#question-form').on('click', function(event) {
+  $('#question-form').on('click', function (event) {
     event.preventDefault();
     var newQuestion = {
       title: $('#title-input').val().trim(),
@@ -13,13 +13,13 @@ $(document).ready(function() {
 
     // Does a post to the question route.
     $.post('/api/questions', newQuestion)
-      .then(function() {
+      .then(function () {
         alert('New question added');
         location.reload();
       });
   });
 
-  $('#answer-add').on('click', function(event) {
+  $('#answer-add').on('click', function (event) {
     console.log(this);
     var id = $(this).attr('data-id');
     var testid = (typeof id === 'undefined') ? 1 : id; //this was originally just ----var id = $(this).attr('data-id');
@@ -29,7 +29,7 @@ $(document).ready(function() {
       answer: $('#answer-input').val().trim()
     };
     $.post('/api/questions/' + testid + '/answers', newAnswer) //This originally just had id instead of testid;
-      .then(function(response) {
+      .then(function (response) {
         console.log(response);
         // create a new <li> and append it to the <ol> in questions.handlebars
         var newAnswer = $('<li>' + response.answer + '</li>');
@@ -39,7 +39,7 @@ $(document).ready(function() {
   });
 
   // When a question is clicked from the "Unanswered Questions" or "Answered Questions" panels
-  $('a.panel-block').on('click', function(event) {
+  $('a.panel-block').on('click', function (event) {
     event.preventDefault();
     // remove the <li>s from the <ol> in "Answers"
     $('#answer-list').empty();
@@ -50,7 +50,7 @@ $(document).ready(function() {
     $('#answer-add').attr('data-id', id);
 
     $.get('/api/all')
-      .then(function(questions) {
+      .then(function (questions) {
         // compare the id of the questions table with the id of the question that was clicked
         for (let i = 0; i < questions.length; i++) {
           if (questions[i].id === id) {
