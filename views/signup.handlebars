@@ -4,18 +4,16 @@
             <img src="/assets/img/AskingForAFriend_Nav.png" width="175" height="75">
         </a>
     </div>
-
-    <div class="navbar-menu">
-        <div class="navbar-start">
-            <a class="navbar-item" href="/index">Home</a>
+    <div class="navbar-menu"></div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-light" href="/index">Home</a>
+                    <a class="button is-light" href="/logout">Log Out</a>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div class="navbar-end">
-        <div class="navbar-item">
-            <a class="button is-light" href="/logout">Log Out</a>
-        </div>
-    </div>
+  </div>
 </nav>
 <!--End navigation-->
 <main class="section">
@@ -39,8 +37,7 @@
                                     <i class="fas fa-check"></i>
                                 </span> --}}
                             </div>
-                            <div style="display: none" id="alert" role="alert">
-                            </div>
+                            <div style="display: none" id="alert" role="alert"></div>
                         </div>
                         <div class="field">
                             <label class="label" for="password">
@@ -48,14 +45,14 @@
                             </label>
                             <input type="password" class="input" placeholder="Create a password" id="password-input">
                         </div>
-                        <div class="field">
+                        {{!-- <div class="field">
                             <label class="label" for="password">
                                 Confirm Password
                             </label>
                             <input type="password" class="input" placeholder="Re-enter your password" id="password-verify">
-                        </div>
+                        </div> --}}
                         <button class="button is-medium is-fullwidth is-success mb-2">Sign Up</button>
-                        <a class="button is-small is-fullwidth is-light" href="/signup">Already have an account? Sign Up</a>
+                        <a class="button is-small is-fullwidth is-light" href="/login">Already have an account? login</a>
                     </form>
                 </div>
             </div>

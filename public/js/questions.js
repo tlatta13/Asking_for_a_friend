@@ -20,8 +20,8 @@ $(document).ready(function() {
   });
 
   $('#answer-add').on('click', function(event) {
+    const id = $(this).attr('data-id');
     event.preventDefault();
-    var id = $(this).data('id');
     var newAnswer = {
       answer: $('#answer-input').val().trim()
     };
