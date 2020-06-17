@@ -29,7 +29,7 @@ $(document).ready(function() {
     };
     $.post('/api/questions/' + id + '/answers', newAnswer)
       .then(function(response) {
-        console.log(response);
+      console.log(response);
         // create a new <li> and append it to the <ol> in questions.handlebars
         var newAnswer = $('<li>' + response.answer + '</li>');
         $('#answer-list').append(newAnswer);

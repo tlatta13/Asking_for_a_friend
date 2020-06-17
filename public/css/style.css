@@ -48,6 +48,11 @@ body {
     background-color: white;
 }
 
+#alert {
+    color: red;
+    font-family: 'Didact Gothic', sans-serif;
+}
+
 #answer-list {
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
