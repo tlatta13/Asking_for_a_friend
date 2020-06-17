@@ -3,7 +3,7 @@ body {
     height: 100vh;
 }
 
-#body-container {
+.body-container {
     background-color: rgb(252, 236, 222);
 }
 
