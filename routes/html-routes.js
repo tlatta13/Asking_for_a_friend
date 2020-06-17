@@ -2,14 +2,6 @@
 var isAuthenticated = require('../config/middleware/isAuthenticated');
 const db = require('../models');
 
-// const QandA = [
-//   { title: 'question title 1', question: 'question body 1', answer: null },
-//   { title: 'question title 2', question: 'question body 2', answer: null },
-//   { title: 'question title 3', question: 'question body 3', answer: null },
-//   { title: 'question title 4', question: 'question body 4', answer: null },
-//   { title: 'question title 5', question: 'question body 5', answer: null }
-// ]
-
 module.exports = function(app) {
 
   app.get('/', function(req, res) {
