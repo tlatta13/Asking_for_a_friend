@@ -1,39 +1,18 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="./index.html">
+    <a class="navbar-item" href="/index">
       <img src="/assets/img/AskingForAFriend_Nav.png" width="175" height="75">
-    </a>
-
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-      data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item" href="./index.html">
-        Home
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-        </div>
+  <div class="navbar-start">
+    <a class="navbar-item" href="/index">Home</a>
+  </div>
+  <!--Log Out Button-->
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="buttons">
+        <a class="button is-light" href="/logout">Log Out</a>
       </div>
     </div>
   </div>
@@ -69,20 +48,11 @@
           <a>Automotive</a>
           <a>Health/Nutrition</a>
         </p>
-        <div class="panel-block">
-          <p class="control has-icons-left">
-            <input class="input" type="text" placeholder="Keyword">
-            <span class="icon is-left">
-              <i class="fas fa-search" aria-hidden="true"></i>
-            </span>
-          </p>
-        </div>
-<<<<<<< HEAD
         <ul>
           {{#each questions}}
           <li>
             {{!-- {{#unless answer}} --}}
-            <a class="panel-block">
+            <a class="panel-block" data-id="{{ id }}">
               <span class="panel-icon">
                 <i class="fas fa-question" aria-hidden="true"></i>
               </span>
@@ -92,18 +62,7 @@
           </li>
           {{/each}}
         </ul>
-=======
-        {{#each Questions}}
-        <a class="panel-block">
-          <span class="panel-icon">
-            <i class="fas fa-question" aria-hidden="true"></i>
-          </span>
-          {{ question }}
-        </a>
-        {{/each}}
->>>>>>> 01366026b7818d043fc58b8840c0b561253bc68f
       </article>
-
       <!--Answered Questions-->
       <article class="panel">
         <p class="panel-heading">
@@ -116,16 +75,8 @@
           <a>Automotive</a>
           <a>Health/Nutrition</a>
         </p>
-        <div class="panel-block">
-          <p class="control has-icons-left">
-            <input class="input" type="text" placeholder="Keyword">
-            <span class="icon is-left">
-              <i class="fas fa-search" aria-hidden="true"></i>
-            </span>
-          </p>
-        </div>
         {{#each Questions}}
-        <a class="panel-block is-active">
+        <a class="panel-block" data-id="{{ id }}">
           <span class="panel-icon">
             <i class="fas fa-question" aria-hidden="true"></i>
           </span>
@@ -133,41 +84,31 @@
         {{/each}}
       </article>
     </div>
-    <!--Display the clicked question and answer form-->
+    <!--Display the clicked question-->
     <div class="column is-8">
       <div class="box">
         <div id="display-question">
-          <h3 id="display-question-title">Question Title</h3>
+          <h3 id="display-question-title"></h3>
           <div class="content">
-            <p id="display-question-body">
-              Question body. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Neque officia illum ad id laborum optio magnam
-              nostrum,
-              minima necessitatibus provident odio culpa facilis dolorem consectetur eius vero
-              facere
-              debitis assumenda.
-            </p>
+            <p id="display-question-content"></p>
           </div>
-
         </div>
         <hr>
+        <!--Displays the answers to the question that was clicked from the panels-->
         <div>
           <h3 id="answers-heading">Answers</h3>
           <div class="content">
-            <ol>
-              <li>
-                Answer
-              </li>
+            <ol id="answer-list">
             </ol>
           </div>
         </div>
         <hr>
+        <!--Input to answer a question-->
         <h3 id="answer-form-heading">Answer This Question</h3>
         <form action="">
           <div class="control">
-            <textarea class="textarea mb-2" placeholder="Enter your answer here" rows="8">
-            </textarea>
-            <input class="button" type="submit" value="Submit">
+            <textarea class="textarea mb-2" id="answer-input" placeholder="Enter your answer here" rows="8"></textarea>
+            <input class="button" type="submit" value="Submit" id ="answer-add">
           </div>
         </form>
       </div>

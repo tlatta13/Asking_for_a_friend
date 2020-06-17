@@ -2,44 +2,52 @@
 var db = require('../models');
 var passport = require('../config/passport');
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
-  app.post('/api/login', passport.authenticate('local'), function(req, res) {
+  app.post('/api/login', passport.authenticate('local'), function (req, res) {
     res.json(req.user);
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post('/api/signup', function(req, res) {
+  app.post('/api/signup', function (req, res) {
     db.User.create({
       username: req.body.username,
       password: req.body.password
     })
-      .then(function() {
+      .then(function () {
         res.redirect(307, '/api/login');
       })
-      .catch(function(err) {
+      .catch(function (err) {
         res.status(401).json(err);
       });
   });
 
   // Post route for user questions
-  app.post('/api/questions', function(req,res) {
+  app.post('/api/questions', function (req, res) {
     db.Question.create({
       title: req.body.title,
       question: req.body.question
-    }).then(function(result) {
+    }).then(function (result) {
       res.json(result);
     });
   });
 
-  app.post('/api/questions/:id/answers', function(req, res) {
+  // app.post('/api/answers', function(req,res) {
+  //   db.Answer.create({
+  //     answer: req.body.answer
+  //   }).then(function(result) {
+  //     res.json(result);
+  //   });
+  // });
+
+  app.post('/api/questions/:id/answers', function (req, res) {
     // create an Answer and associate it to question with id of req.params.id
     db.Answer.create({
-      answer: req.body.text,
+      answer: req.body.answer,
       QuestionId: req.params.id
     }).then(createdAnswer => {
       res.json(createdAnswer);
@@ -49,13 +57,13 @@ module.exports = function(app) {
   });
 
   // Route for logging user out
-  app.get('/logout', function(req, res) {
+  app.get('/logout', function (req, res) {
     req.logout();
     res.redirect('/');
   });
 
   // Route for getting some data about our user to be used client side
-  app.get('/api/user_data', function(req, res) {
+  app.get('/api/user_data', function (req, res) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
@@ -70,9 +78,20 @@ module.exports = function(app) {
   });
 
   // Route for getting all questions
-  app.get('/api/all', function(req, res) {
-    db.Question.findAll({}).then(function(results) {
+  app.get('/api/all', function (req, res) {
+    db.Question.findAll({}).then(function (results) {
       res.json(results);
     });
   });
+
+  // Route for rendering most recent questions to the questions page
+  // app.get('/api/question', function (req, res) {
+  //   Questions.findAll({
+  //     where: {
+  //       createdAt: idk// Can use a range here? As seen in sequelize docs that Jeff sent.
+  //     }
+  //   }).then(function (result) {
+  //     return res.json(result);
+  //   });
+  // });
 };
