@@ -20,14 +20,17 @@ $(document).ready(function() {
   });
 
   $('#answer-add').on('click', function(event) {
+    console.log(this);
+    const id = $(this).attr('data-id');
+    console.log(id);
     event.preventDefault();
-    var id = $(this).data('id');
     var newAnswer = {
       answer: $('#answer-input').val().trim()
     };
     $.post('/api/questions/' + id + '/answers', newAnswer)
       .then(function(response) {
-        // create a new <li> and append it to the <ol> in
+      console.log(response);
+        // create a new <li> and append it to the <ol> in questions.handlebars
         var newAnswer = $('<li>' + response.answer + '</li>');
         $('#answer-list').append(newAnswer);
         $('#answer-input').val('');

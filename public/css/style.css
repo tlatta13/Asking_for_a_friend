@@ -3,7 +3,7 @@ body {
     height: 100vh;
 }
 
-#body-container {
+.body-container {
     background-color: rgb(252, 236, 222);
 }
 
@@ -46,6 +46,11 @@ body {
 
 .panel-tabs {
     background-color: white;
+}
+
+#alert {
+    color: red;
+    font-family: 'Didact Gothic', sans-serif;
 }
 
 #answer-list {
