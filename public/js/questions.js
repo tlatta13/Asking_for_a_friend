@@ -21,10 +21,16 @@ $(document).ready(function () {
 
   $('#answer-add').on('click', function (event) {
     console.log(this);
+    event.preventDefault();
     var dataId = $(this).attr('data-id');
     var id = (typeof dataId === 'undefined') ? 1 : dataId; //this was originally just ----var id = $(this).attr('data-id');
-    console.log(id);
-    event.preventDefault();
+    // getting the word count of the answer to alert user if it exceeds maximum length
+    var characterCount = $('#answer-input').val().length;
+    console.log(characterCount);
+    // console.log(id);
+    // if (characterCount > 2000 ) {
+    //   alert('Character length exceeded. Please keep your answer to 2000 characters or less.');
+    // }
     var newAnswer = {
       answer: $('#answer-input').val().trim()
     };

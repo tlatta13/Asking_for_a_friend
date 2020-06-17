@@ -53,6 +53,9 @@ module.exports = function (app) {
       res.json(createdAnswer);
     }).catch(err => {
       res.status(500).json(err);
+      // if (req.body.answer.length > 2000) {
+      //   res.status(400).json(err);
+      // }
     });
   });
 
