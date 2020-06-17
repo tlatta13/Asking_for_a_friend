@@ -53,14 +53,6 @@
           <a>Automotive</a>
           <a>Health/Nutrition</a>
         </p>
-        <div class="panel-block">
-          <p class="control has-icons-left">
-            <input class="input" type="text" placeholder="Keyword">
-            <span class="icon is-left">
-              <i class="fas fa-search" aria-hidden="true"></i>
-            </span>
-          </p>
-        </div>
         <ul>
           {{#each questions}}
           <li>
@@ -76,7 +68,6 @@
           {{/each}}
         </ul>
       </article>
-
       <!--Answered Questions-->
       <article class="panel">
         <p class="panel-heading">
@@ -89,14 +80,6 @@
           <a>Automotive</a>
           <a>Health/Nutrition</a>
         </p>
-        <div class="panel-block">
-          <p class="control has-icons-left">
-            <input class="input" type="text" placeholder="Keyword">
-            <span class="icon is-left">
-              <i class="fas fa-search" aria-hidden="true"></i>
-            </span>
-          </p>
-        </div>
         {{#each Questions}}
         <a class="panel-block" data-id="{{ id }}">
           <span class="panel-icon">
@@ -114,7 +97,6 @@
           <div class="content">
             <p id="display-question-content"></p>
           </div>
-
         </div>
         <hr>
         <!--Displays the answers to the question that was clicked from the panels-->
