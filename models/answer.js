@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 module.exports = function (sequelize, DataTypes) {
   var Answer = sequelize.define('Answer', {
-    // The question must be a string and not null
+    // The answer must be a string and not null
     answer: {
       type: DataTypes.STRING,
       allowNull: false,

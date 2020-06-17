@@ -1,7 +1,8 @@
 $(document).ready(function() {
-  $(window).on( 'load', function() {
+  // going to write code here to render question to main body
+  // $(window).on( 'load', function() {
 
-  });
+  // });
 
   $('#question-form').on('click', function(event) {
     event.preventDefault();
@@ -25,23 +26,28 @@ $(document).ready(function() {
       answer: $('#answer-input').val().trim()
     };
     $.post('/api/questions/' + id + '/answers', newAnswer)
-      .then(function() {
-        console.log('New answer submitted');
-        location.reload();
+      .then(function(response) {
+        // create a new <li> and append it to the <ol> in
+        var newAnswer = $('<li>' + response.answer + '</li>');
+        $('#answer-list').append(newAnswer);
+        $('#answer-input').val('');
       });
   });
 
-  $('.panel-block').on('click', function(event) {
+  // When a question is clicked from the "Unanswered Questions" or "Answered Questions" panels
+  $('a.panel-block').on('click', function(event) {
     event.preventDefault();
+    // remove the <li>s from the <ol> in "Answers"
+    $('#answer-list').empty();
     var id = $(this).data('id');
     var $title = $('#display-question-title');
     var $content = $('#display-question-content');
-    // add an data-id attribute to the submit button in the answer form
-    var answerId = $('#answer-add').attr('data-id', id);
-    console.log(answerId);
+    // add a data-id attribute to the submit button in the answer form
+    $('#answer-add').attr('data-id', id);
 
     $.get('/api/all')
       .then(function(questions) {
+        // compare the id of the questions table with the id of the question that was clicked
         for (let i = 0; i < questions.length; i++) {
           if (questions[i].id === id) {
             $title.text(questions[i].title);
