@@ -44,7 +44,7 @@ $(document).ready(function () {
       .then(function (response) {
         console.log(response);
         // create a new <li> and append it to the <ol> in questions.handlebars
-        let newAnswer = $('<li id="remove-num">' + response.answer + '</li>');
+        let newAnswer = $('<li>' + response.answer + '</li>');
         $('#answer-list').append(newAnswer);
         $('#answer-input').val('');
       });
@@ -76,15 +76,15 @@ $(document).ready(function () {
         let lastQuestion = questions[questions.length-1].Answers;
         console.log(lastQuestion);
         let lastAnswer = lastQuestion.slice(-5);
-        for (let i = 0; i < lastAnswer.length; i++) {
-          let num = i + 1;
-          let newPTag = $('<p>').text(num + '. ' + lastAnswer[i].answer);
-          $('#answer-list').append(newPTag);
-        }
-        // lastAnswer.forEach((answer)=> {
-        //   let newPTag = $('<p>').text(answer.answer);
+        lastAnswer.forEach((answer)=> {
+          let newli = $('<li>').text(answer.answer);
+          $('#answer-list').append(newli);
+        });
+        // for (let i = 0; i < lastAnswer.length; i++) {
+        //   let num = i + 1;
+        //   let newPTag = $('<p>').text(num + '. ' + lastAnswer[i].answer);
         //   $('#answer-list').append(newPTag);
-        // });
+        // }
       });
   });
 });
