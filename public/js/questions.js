@@ -90,7 +90,7 @@ $(document).ready(function () {
             $title.text(questions[i].title);
             $content.text(questions[i].question);
             // $created.text(questions[i].createdAt);
-            $created.text(moment.utc(questions[i].createdAt).local().format('LLL'));
+            $created.text(moment().utc(questions[i].createdAt).local().format('LLL'));
             localStorage.setItem('title', $title.text());
             localStorage.setItem('content', $content.text());
             localStorage.setItem('created', $created.text());
