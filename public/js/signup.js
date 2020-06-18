@@ -36,14 +36,6 @@ $(document).ready(function () {
       return;
     }
 
-    // else if (passwordInput !== passwordVerify) {
-    //   alert('Password must match');
-    //   usernameInput.val('');
-    //   passwordInput.val('');
-    //   passwordVerify.val('');
-    //   return;
-    // }
-
     // If we have an username and password, run the signUpUser function
     signUpUser(userData.username, userData.password);
     usernameInput.val('');
