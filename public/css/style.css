@@ -12,17 +12,6 @@ body {
     font-weight: 400;
 }
 
-.card-content,
-.form-header,
-.panel-heading,
-#display-question-title,
-#answers-heading,
-#answer-form-heading,
-#ask-question {
-    font-family: 'Patrick Hand', sans-serif;
-    font-size: 2rem;
-}
-
 #login,
 #sign-up {
     font-family: 'Quicksand', sans-serif;
@@ -34,8 +23,11 @@ body {
     font-weight: 600;
 }
 
-.placeholder-column {
-    padding: 0;
+.card-content,
+.form-header,
+.panel-heading {
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 2rem;
 }
 
 .panel-block {
@@ -46,6 +38,45 @@ body {
 
 .panel-tabs {
     background-color: white;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* section around main questions.handlebars */
+#questions-main {
+    background-color: rgb(252, 236, 222);
+    padding-top: 2rem;
+
+}
+
+/* styles main question/answer body in questions.handlebars */
+#question-box {
+    padding: 2rem;
+}
+
+#answers-heading,
+#answer-form-heading,
+#question-heading {
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+#display-question-title {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+#display-question-content {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+}
+
+#answer-list {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    margin-left: 1em;
 }
 
 #alert {
@@ -53,11 +84,6 @@ body {
     font-family: 'Didact Gothic', sans-serif;
 }
 
-#answer-list {
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 500;
-}
-
-#remove-num {
+.remove-num {
     list-style-type: none;
 }

@@ -56,6 +56,9 @@ module.exports = function (app) {
       res.json(createdAnswer);
     }).catch(err => {
       res.status(500).json(err);
+      // if (req.body.answer.length > 2000) {
+      //   res.status(400).json(err);
+      // }
     });
   });
 
@@ -72,7 +75,6 @@ module.exports = function (app) {
       res.json({});
     } else {
       // Otherwise send back the user's username and id
-      // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         username: req.user.username,
         id: req.user.id
@@ -83,12 +85,6 @@ module.exports = function (app) {
   // Route for getting all questions
   app.get('/api/all', function (req, res) {
     db.Question.findAll({}).then(function (results) {
-      res.json(results);
-    });
-  });
-
-  app.get('/api/users', function (req, res) {
-    db.User.findAll({}).then(function (results) {
       res.json(results);
     });
   });
