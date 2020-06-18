@@ -1,5 +1,3 @@
-//const db = require('../../models');
-
 $(document).ready(function () {
   // when the page loads, retrieve the last selected question from local storage and render it
   // if local storage is empty, make an api request to render a question from database
@@ -69,7 +67,7 @@ $(document).ready(function () {
       });
   });
 
-  // When a question is clicked from the "Unanswered Questions" or "Answered Questions" panels
+  // When a question is clicked from the "All Questions" panel
   $('a.panel-block').on('click', function (event) {
     event.preventDefault();
     // remove the <li>s from the <ol> in "Answers"
@@ -89,8 +87,6 @@ $(document).ready(function () {
             $title.text(questions[i].title);
             $content.text(questions[i].question);
             $created.text(questions[i].createdAt);
-            console.log($title.text());
-            console.log($content.text());
             localStorage.setItem('title', $title.text());
             localStorage.setItem('content', $content.text());
             localStorage.setItem('created', $created.text());
@@ -106,11 +102,6 @@ $(document).ready(function () {
           let newli = $('<li>').text(answer.answer);
           $('#answer-list').append(newli);
         });
-        // for (let i = 0; i < lastAnswer.length; i++) {
-        //   let num = i + 1;
-        //   let newPTag = $('<p>').text(num + '. ' + lastAnswer[i].answer);
-        //   $('#answer-list').append(newPTag);
-        // }
       });
   });
 });
