@@ -36,6 +36,18 @@ module.exports = function(app) {
         res.render('questions', { questions: questions });
       });
   });
+  // app.get('/api/questions/:id/answers', function(req, res) {
+  //   db.Question.findAll({
+  //     include: db.Answer, where: {id: req.params.id }
+  //   }).then(function (result) {
+  //     let lastQuestion = result[result.length-1].Answers;
+  //     let lastAnswer = lastQuestion[lastQuestion.length-1].answer;
+  //     console.log(lastAnswer);
+  //     res.render('questions', {answer: lastAnswer});
+  //   });
+  // });
+
+
 
   // app.get('/questions', isAuthenticated, function(req,res) {
   //   db.Answer.findAll({where: {QuestionId:{

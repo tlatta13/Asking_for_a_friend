@@ -33,7 +33,10 @@ module.exports = function (app) {
       question: req.body.question
     }).then(function (result) {
       res.json(result);
-    });
+    })
+      .catch(function(err) {
+        console.log(err);
+      });
   });
 
   // app.post('/api/answers', function(req,res) {
@@ -105,15 +108,11 @@ module.exports = function (app) {
   //     });
   //   });
 
-  // app.get('/api/question/:id/answer', function (req, res) {
-  //   db.Answer.findAll({
-  //     where: {
-  //       QuestionId: {
-  //         [Op.eq]: 2
-  //       }
-  //     }
-  //   }).then(function (result) {
-  //     return res.json(result);
-  //   });
-  // });
+  app.get('/api/questions/:id/answers', function (req, res) {
+    db.Question.findAll({
+      include: db.Answer, where: {id: req.params.id }
+    }).then(function (result) {
+      return res.json(result);
+    });
+  });
 };
