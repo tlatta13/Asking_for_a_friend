@@ -110,11 +110,6 @@ $(document).ready(function () {
           let newli = $('<li>').text(answer.answer);
           $('#answer-list').append(newli);
         });
-        // for (let i = 0; i < lastAnswer.length; i++) {
-        //   let num = i + 1;
-        //   let newPTag = $('<p>').text(num + '. ' + lastAnswer[i].answer);
-        //   $('#answer-list').append(newPTag);
-        // }
       });
   });
 });
