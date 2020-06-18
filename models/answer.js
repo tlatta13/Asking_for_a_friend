@@ -3,9 +3,8 @@ module.exports = function (sequelize, DataTypes) {
   var Answer = sequelize.define('Answer', {
     // The answer must be a string and not null
     answer: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      //notEmpty: true
+      type: DataTypes.TEXT,
+      allowNull: false
     },
 
   });
