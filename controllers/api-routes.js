@@ -56,9 +56,6 @@ module.exports = function (app) {
       res.json(createdAnswer);
     }).catch(err => {
       res.status(500).json(err);
-      // if (req.body.answer.length > 2000) {
-      //   res.status(400).json(err);
-      // }
     });
   });
 
@@ -88,21 +85,6 @@ module.exports = function (app) {
       res.json(results);
     });
   });
-
-  // Route for rendering most recent questions to the questions page
-  //   app.get('/api/question', function (req, res) {
-  //     var currentTime = Date.now();
-  //     console.log(currentTime);
-  //     Questions.findAll({
-  //       where: {
-  //         createdAt: {
-  //           $between: []
-  //         }
-  //       }
-  //     }).then(function (result) {
-  //       return res.json(result);
-  //     });
-  //   });
 
   app.get('/api/questions/:id/answers', function (req, res) {
     db.Question.findAll({

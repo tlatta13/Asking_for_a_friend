@@ -4,13 +4,11 @@ module.exports = function(sequelize, DataTypes) {
     // The question must be a string and not null
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
-      //notEmpty: true
+      allowNull: false
     },
     question: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      //notEmpty: true
+      type: DataTypes.TEXT,
+      allowNull: false
     }
   });
   Question.associate = function(model){
