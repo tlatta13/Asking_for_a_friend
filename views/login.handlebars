@@ -3,23 +3,30 @@
         <a class="navbar-item" href="/index">
             <img src="/assets/img/AskingForAFriend_Nav.png" width="175" height="75">
         </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
     </div>
-    <div class="navbar-menu"></div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-light" href="/index">Home</a>
-                    <a class="button is-light" href="/logout">Log Out</a>
+                    <a class="button is-small is-light" href="/index"><strong>Home</strong></a>
+                    <a class="button is-small is-light" href="/logout"><strong>Logout</strong></a>
                 </div>
             </div>
         </div>
-  </div>
+    </div>
 </nav>
 <!--End navigation-->
 <main class="section">
     <div class="container">
         <div class="columns is-centered">
-            <div class="column is-4">
+            <div class="column is-5">
                 <div id="form-container" class="box">
                     <p class="content form-header">Thought of another question?</p>
                     <!--Login form starts here-->
