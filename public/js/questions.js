@@ -4,17 +4,20 @@ $(document).ready(function () {
   const renderLastQuestion = () => {
     var title = localStorage.getItem('title');
     var content = localStorage.getItem('content');
+    var created = localStorage.getItem('created');
 
     if (title === null && content === null) {
       $.get('/api/all')
         .then(function (questions) {
           $('#display-question-title').text(questions[0].title);
           $('#display-question-content').text(questions[0].question);
+          $('#display-createdAt').text(questions[0].createdAt);
         });
     }
 
     $('#display-question-title').text(title);
     $('#display-question-content').text(content);
+    $('#display-createdAt').text(created);
   };
   // calling function to render last clicked question
   renderLastQuestion();
@@ -86,7 +89,8 @@ $(document).ready(function () {
           if (questions[i].id === id) {
             $title.text(questions[i].title);
             $content.text(questions[i].question);
-            $created.text(questions[i].createdAt);
+            // $created.text(questions[i].createdAt);
+            $created.text(moment.utc(questions[i].createdAt).local().format('LLL'));
             localStorage.setItem('title', $title.text());
             localStorage.setItem('content', $content.text());
             localStorage.setItem('created', $created.text());

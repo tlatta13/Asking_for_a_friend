@@ -73,6 +73,10 @@ body {
     font-weight: 500;
 }
 
+#display-createdAt {
+    font-family: 'Quicksand', sans-serif;
+}
+
 #answer-list {
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
