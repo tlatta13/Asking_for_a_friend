@@ -46,7 +46,7 @@
         <p class="panel-heading">
           All Questions
         </p>
-        <ul>
+        <ul id="question-list">
         {{#each questions}}
         {{#unless answer}}
           <li>
@@ -68,11 +68,11 @@
         <h3 id="question-heading">Just asking for a friend...</h3>
         <div id="display-question">
           <h4 id="display-question-title"></h4>
-          <p id="display-question-content" class="mt-1"></p>
+          <p id="display-question-content"></p>
           <p id="display-createdAt" class="content is-small mt-3"></p>
         </div>
         <hr>
-        <!--Displays the answers to the question that was clicked from the panels-->
+        <!--Display the answers to the clicked question-->
         <div>
           <h3 id="answers-heading">Answers</h3>
           <div class="content">
