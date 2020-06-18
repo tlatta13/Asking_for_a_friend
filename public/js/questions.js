@@ -1,12 +1,31 @@
 //const db = require('../../models');
 
 $(document).ready(function () {
-  answerShower = function() {
-    $.get('/api/questions/' + 1 +'/answers')
-      .then(function(questions){
-        let lastQuestion = questions[questions.length-1].Answers;
+  // when the page loads, retrieve the last selected question from local storage and render it
+  // if local storage is empty, make an api request to render a question from database
+  const renderLastQuestion = () => {
+    var title = localStorage.getItem('title');
+    var content = localStorage.getItem('content');
+
+    if (title === null && content === null) {
+      $.get('/api/all')
+        .then(function (questions) {
+          $('#display-question-title').text(questions[0].title);
+          $('#display-question-content').text(questions[0].question);
+        });
+    }
+
+    $('#display-question-title').text(title);
+    $('#display-question-content').text(content);
+  };
+  // calling function to render last clicked question
+  renderLastQuestion();
+  answerShower = function () {
+    $.get('/api/questions/' + 1 + '/answers')
+      .then(function (questions) {
+        let lastQuestion = questions[questions.length - 1].Answers;
         console.log(lastQuestion);
-        let lastAnswer = lastQuestion[lastQuestion.length-1].answer;
+        let lastAnswer = lastQuestion[lastQuestion.length - 1].answer;
         console.log(lastAnswer);
         let newPTag = $('<p>').text(lastAnswer);
         $('#answer-list').append(newPTag);
@@ -26,7 +45,7 @@ $(document).ready(function () {
         alert('New question added');
         location.reload();
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log(err);
       });
   });
@@ -69,18 +88,21 @@ $(document).ready(function () {
           if (questions[i].id === id) {
             $title.text(questions[i].title);
             $content.text(questions[i].question);
-            // $created.text(questions[i].updatedAt);
-            // $created.text(moment(questions[i].updatedAt).format('LLL'));
-            $created.text(questions[i].updatedAt);
+            $created.text(questions[i].createdAt);
+            console.log($title.text());
+            console.log($content.text());
+            localStorage.setItem('title', $title.text());
+            localStorage.setItem('content', $content.text());
+            localStorage.setItem('created', $created.text());
           }
         }
       });
-    $.get('/api/questions/' + id +'/answers')
-      .then(function(questions){
-        let lastQuestion = questions[questions.length-1].Answers;
+    $.get('/api/questions/' + id + '/answers')
+      .then(function (questions) {
+        let lastQuestion = questions[questions.length - 1].Answers;
         console.log(lastQuestion);
         let lastAnswer = lastQuestion.slice(-5);
-        lastAnswer.forEach((answer)=> {
+        lastAnswer.forEach((answer) => {
           let newli = $('<li>').text(answer.answer);
           $('#answer-list').append(newli);
         });
