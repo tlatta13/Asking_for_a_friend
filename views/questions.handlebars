@@ -23,7 +23,7 @@
     </div>
 </nav>
 <!--Navbar End-->
-<section class="section body-container">
+<section id="questions-main" class="section">
   <div class="columns">
     <div class="column is-4">
       <!--Ask New Question -->
@@ -84,10 +84,11 @@
     </div>
     <!--Display the clicked question-->
     <div class="column is-8">
-      <div class="box">
+      <div class="box" id="question-box">
+        <h3 id="question-heading">Just asking for a friend...</h3>
         <div id="display-question">
-          <p class="title" id="display-question-title">{{questions.0.title}}</p>
-          <p class="subtitle" id="display-question-content">{{questions.0.question}}</p>
+          <h4 id="display-question-title">{{questions.0.title}}</h4>
+          <p id="display-question-content">{{questions.0.question}}</p>
         </div>
         <hr>
         <!--Displays the answers to the question that was clicked from the panels-->
@@ -95,15 +96,12 @@
           <h3 id="answers-heading">Answers</h3>
           <div class="content">
             <ol id="answer-list">
-              {{#each Answers}}
-              <li>{{answer}}</li>
-              {{/each}}
             </ol>
           </div>
         </div>
         <hr>
         <!--Input to answer a question-->
-        <h3 id="answer-form-heading">Answer This Question</h3>
+        <h3 id="answer-form-heading">Submit Your Answer</h3>
         <form action="">
           <div class="control">
             <textarea class="textarea mb-2" id="answer-input" placeholder="Enter your answer here" rows="8"></textarea>
