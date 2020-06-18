@@ -56,6 +56,9 @@ module.exports = function (app) {
       res.json(createdAnswer);
     }).catch(err => {
       res.status(500).json(err);
+      // if (req.body.answer.length > 2000) {
+      //   res.status(400).json(err);
+      // }
     });
   });
 
@@ -83,12 +86,6 @@ module.exports = function (app) {
   // Route for getting all questions
   app.get('/api/all', function (req, res) {
     db.Question.findAll({}).then(function (results) {
-      res.json(results);
-    });
-  });
-
-  app.get('/api/users', function (req, res) {
-    db.User.findAll({}).then(function (results) {
       res.json(results);
     });
   });
