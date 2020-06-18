@@ -4,8 +4,10 @@ module.exports = function (sequelize, DataTypes) {
     // The answer must be a string and not null
     answer: {
       type: DataTypes.STRING,
-      allowNull: false
-    }
+      allowNull: false,
+      //notEmpty: true
+    },
+
   });
   Answer.associate = function(model) {
     Answer.belongsTo(model.Question, {

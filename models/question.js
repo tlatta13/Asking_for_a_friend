@@ -5,10 +5,12 @@ module.exports = function(sequelize, DataTypes) {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
+      //notEmpty: true
     },
     question: {
       type: DataTypes.STRING,
       allowNull: false,
+      //notEmpty: true
     }
   });
   Question.associate = function(model){

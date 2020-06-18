@@ -57,3 +57,7 @@ body {
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
 }
+
+#remove-num {
+    list-style-type: none;
+}
