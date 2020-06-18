@@ -6,4 +6,3 @@ $(document).ready(function() {
   });
 });
 
-//This was changed to questions.js erroneously. If something breaks look here.
