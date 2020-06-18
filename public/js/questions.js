@@ -17,7 +17,6 @@ $(document).ready(function () {
       });
   };
 
-  
 
   $('#question-form').on('click', function (event) {
     event.preventDefault();
