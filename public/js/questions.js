@@ -58,6 +58,7 @@ $(document).ready(function () {
     let id = $(this).data('id');
     let $title = $('#display-question-title');
     let $content = $('#display-question-content');
+    let $created = $('#display-createdAt');
     // add a data-id attribute to the submit button in the answer form
     $('#answer-add').attr('data-id', id);
 
@@ -68,6 +69,9 @@ $(document).ready(function () {
           if (questions[i].id === id) {
             $title.text(questions[i].title);
             $content.text(questions[i].question);
+            // $created.text(questions[i].updatedAt);
+            // $created.text(moment(questions[i].updatedAt).format('LLL'));
+            $created.text(questions[i].updatedAt);
           }
         }
       });
