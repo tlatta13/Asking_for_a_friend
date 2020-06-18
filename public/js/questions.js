@@ -1,10 +1,6 @@
 //const db = require('../../models');
 
 $(document).ready(function () {
-  // going to write code here to render question to main body
-  // $(window).on( 'load', function() {
-
-  // });
   answerShower = function() {
     $.get('/api/questions/' + 1 +'/answers')
       .then(function(questions){
@@ -17,11 +13,9 @@ $(document).ready(function () {
       });
   };
 
-  
-
   $('#question-form').on('click', function (event) {
     event.preventDefault();
-    var newQuestion = {
+    let newQuestion = {
       title: $('#title-input').val().trim(),
       question: $('#question-input').val().trim()
     };
@@ -39,18 +33,18 @@ $(document).ready(function () {
 
   $('#answer-add').on('click', function (event) {
     //console.log(this);
-    var dataId = $(this).attr('data-id');
-    var id = (typeof dataId === 'undefined') ? 1 : dataId; //this was originally just ----var id = $(this).attr('data-id');
+    let dataId = $(this).attr('data-id');
+    let id = (typeof dataId === 'undefined') ? 1 : dataId; //this was originally just ----let id = $(this).attr('data-id');
     //console.log(id);
     event.preventDefault();
-    var newAnswer = {
+    let newAnswer = {
       answer: $('#answer-input').val().trim()
     };
     $.post('/api/questions/' + id + '/answers', newAnswer) //This originally just had id instead of testid;
       .then(function (response) {
         console.log(response);
         // create a new <li> and append it to the <ol> in questions.handlebars
-        var newAnswer = $('<li id="remove-num">' + response.answer + '</li>');
+        let newAnswer = $('<li>' + response.answer + '</li>');
         $('#answer-list').append(newAnswer);
         $('#answer-input').val('');
       });
@@ -61,9 +55,9 @@ $(document).ready(function () {
     event.preventDefault();
     // remove the <li>s from the <ol> in "Answers"
     $('#answer-list').empty();
-    var id = $(this).data('id');
-    var $title = $('#display-question-title');
-    var $content = $('#display-question-content');
+    let id = $(this).data('id');
+    let $title = $('#display-question-title');
+    let $content = $('#display-question-content');
     // add a data-id attribute to the submit button in the answer form
     $('#answer-add').attr('data-id', id);
 
@@ -83,9 +77,14 @@ $(document).ready(function () {
         console.log(lastQuestion);
         let lastAnswer = lastQuestion.slice(-5);
         lastAnswer.forEach((answer)=> {
-          let newPTag = $('<p>').text(answer.answer);
-          $('#answer-list').append(newPTag);
+          let newli = $('<li>').text(answer.answer);
+          $('#answer-list').append(newli);
         });
+        // for (let i = 0; i < lastAnswer.length; i++) {
+        //   let num = i + 1;
+        //   let newPTag = $('<p>').text(num + '. ' + lastAnswer[i].answer);
+        //   $('#answer-list').append(newPTag);
+        // }
       });
   });
 });
