@@ -17,7 +17,7 @@
   </div>
 </nav>
 <!--Navbar End-->
-<section class="section">
+<section id="questions-main" class="section">
   <div class="columns">
     <div class="column is-4">
       <!--Ask New Question -->
@@ -78,8 +78,8 @@
     </div>
     <!--Display the clicked question-->
     <div class="column is-8">
-      <div class="box">
-        <h3 id="question-heading">Recent Question</h3>
+      <div class="box" id="question-box">
+        <h3 id="question-heading">Just asking for a friend...</h3>
         <div id="display-question">
           <h4 id="display-question-title">{{questions.0.title}}</h4>
           <p id="display-question-content">{{questions.0.question}}</p>
