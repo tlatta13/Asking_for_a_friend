@@ -78,6 +78,10 @@ body {
     font-family: 'Quicksand', sans-serif;
 }
 
+#question-details {
+    margin-top: .75em;
+}
+
 #answer-list {
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
