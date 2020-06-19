@@ -103,7 +103,7 @@ $(document).ready(function () {
       });
     $.get('/api/questions/' + id + '/answers')
       .then(function (questions) {
-        let lastQuestion = questions[questions.length - 1].Answers;
+        let lastQuestion = questions[0].Answers;
         console.log(lastQuestion);
         let lastAnswer = lastQuestion.slice(-5);
         lastAnswer.forEach((answer) => {
