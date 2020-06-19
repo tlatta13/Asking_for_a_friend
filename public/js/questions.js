@@ -25,14 +25,21 @@ $(document).ready(function () {
             $username.text('Posted by: ' + response[0].username);
             $created.text(response[0].createdAt);
             // I changed this index to just 0 since there will only ever be one item in the array
+            
             let answers = response[0].Answers;
+            console.log(answers);
+            // for (let i = 0; i = answers.length; i++) {
+            //   let newli = $('<li>').text(answers.answer);
+            //   $($answerList).append(newli);
+            // }
             // grabs only the last 5 answers from the Answers object
-            let recentAnswers = answers.slice(-5);
-            // create a new <li> for each recent answer and append it to the list
-            recentAnswers.forEach((answer) => {
-              let newli = $('<li>').text(answer.answer);
-              $($answerList).append(newli);
-            });
+            // let recentAnswers = answers.slice(-5);
+            // console.log(recentAnswers);
+            // // create a new <li> for each recent answer and append it to the list
+            // recentAnswers.forEach((answer) => {
+            //   let newli = $('<li>').text(answer.answer);
+            //   $($answerList).append(newli);
+            // });
           });
       } else {
         $.get('/api/questions/' + 1 + '/answers')
