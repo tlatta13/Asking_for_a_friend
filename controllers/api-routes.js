@@ -30,9 +30,10 @@ module.exports = function (app) {
   app.post('/api/questions', function (req, res) {
     db.Question.create({
       title: req.body.title,
-      question: req.body.question
+      question: req.body.question,
+      username: req.body.username
     }).then(function (result) {
-      res.json(result);
+      return res.json(result);
     })
       .catch(function(err) {
         console.log(err);

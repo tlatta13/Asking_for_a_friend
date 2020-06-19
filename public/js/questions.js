@@ -1,116 +1,154 @@
-//const db = require('../../models');
+let $title = $('#display-question-title');
+let $content = $('#display-question-content');
+let $username = $('#display-username');
+let $created = $('#display-createdAt');
+let $answerBtn = $('#answer-add');
+let $answerList = $('#answer-list');
 
 $(document).ready(function () {
-  // when the page loads, retrieve the last selected question from local storage and render it
-  // if local storage is empty, make an api request to render a question from database
+  // When the page loads, retrieve the last selected question from local storage and render it
+  // If local storage is empty, make an api request to render a question from database
+  // If nothing in database, display a message in the browser
   const renderLastQuestion = () => {
-    var title = localStorage.getItem('title');
-    var content = localStorage.getItem('content');
-    var created = localStorage.getItem('created');
 
-    if (title === null && content === null) {
-      $.get('/api/all')
-        .then(function (questions) {
-          $('#display-question-title').text(questions[0].title);
-          $('#display-question-content').text(questions[0].question);
-          $('#display-createdAt').text(questions[0].createdAt);
-        });
-    }
+    const checkLocalStorage = () => {
+      let id = localStorage.getItem('questionId');
+      if (id !== null) {
+        $.get('/api/questions/' + id + '/answers')
+          .then(function (response) {
+            console.log(response);
+            // add a data-id attribute to the submit button in the answer form
+            $($answerBtn).attr('data-id', response[0].id);
+            // render the question details
+            $title.text(response[0].title);
+            $content.text(response[0].question);
+            $username.text('Posted by: ' + response[0].username);
+            $created.text(response[0].createdAt);
+            // I changed this index to just 0 since there will only ever be one item in the array
+            let answers = response[0].Answers;
+            // grabs only the last 5 answers from the Answers object
+            let recentAnswers = answers.slice(-5);
+            // create a new <li> for each recent answer and append it to the list
+            recentAnswers.forEach((answer) => {
+              let newli = $('<li>').text(answer.answer);
+              $($answerList).append(newli);
+            });
+          });
+      } else {
+        $.get('/api/questions/' + 1 + '/answers')
+          .then(function (response) {
+            console.log(response);
+            $($answerBtn).attr('data-id', response[0].id);
+            // render the question details
+            $title.text(response[0].title);
+            $content.text(response[0].question);
+            $username.text('Posted by: ' + response[0].username);
+            $created.text(response[0].createdAt);
+            // I changed this index to just 0 since there will only ever be one item in the array
+            let answers = response[0].Answers;
+            // grabs only the last 5 answers from the Answers object
+            let recentAnswers = answers.slice(-5);
+            // render a new <li> for each recent answer
+            recentAnswers.forEach((answer) => {
+              let newli = $('<li>').text(answer.answer);
+              $($answerList).append(newli);
+            });
+          });
+      }
+    };
 
-    $('#display-question-title').text(title);
-    $('#display-question-content').text(content);
-    $('#display-createdAt').text(created);
+    // First, check to see if any questions exist in the database
+    // If so, check local storage for a question id to render
+    $.get('/api/all')
+      .then(function (response) {
+        if (response.length === 0) {
+          $title.text('No questions yet!');
+          let newLi = $('<li>').appendTo('#question-list');
+          let newAnchor = $('<a>').attr('class', 'panel-block').text('Ask a question to see it appear here!');
+          newAnchor.appendTo(newLi);
+        } else {
+          checkLocalStorage();
+        }
+      });
+
   };
   // calling function to render last clicked question
   renderLastQuestion();
-  answerShower = function () {
-    $.get('/api/questions/' + 1 + '/answers')
-      .then(function (questions) {
-        let lastQuestion = questions[questions.length - 1].Answers;
-        console.log(lastQuestion);
-        let lastAnswer = lastQuestion[lastQuestion.length - 1].answer;
-        console.log(lastAnswer);
-        let newPTag = $('<p>').text(lastAnswer);
-        $('#answer-list').append(newPTag);
-      });
-  };
 
+  // When user submits a new question...
   $('#question-form').on('click', function (event) {
     event.preventDefault();
-    let newQuestion = {
-      title: $('#title-input').val().trim(),
-      question: $('#question-input').val().trim()
+    const newQuestion = (username) => {
+      const newQuestion = {
+        title: $('#title-input').val().trim(),
+        question: $('#question-input').val().trim(),
+        username: username
+      };
+      // Does a post to the question route.
+      $.post('/api/questions', newQuestion)
+        .then(function (response) {
+          localStorage.setItem('questionId', response.id);
+          location.reload();
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
     };
 
-    // Does a post to the question route.
-    $.post('/api/questions', newQuestion)
-      .then(function () {
-        alert('New question added');
-        location.reload();
-      })
-      .catch(function (err) {
-        console.log(err);
+    $.get('/api/user_data')
+      .then(function (response) {
+        newQuestion(response.username);
       });
   });
 
-  $('#answer-add').on('click', function (event) {
-    //console.log(this);
+  // When user adds a new answer...
+  $($answerBtn).on('click', function (event) {
     let dataId = $(this).attr('data-id');
-    let id = (typeof dataId === 'undefined') ? 1 : dataId; //this was originally just ----let id = $(this).attr('data-id');
-    //console.log(id);
+    let id = (typeof dataId === 'undefined') ? 1 : dataId;
     event.preventDefault();
     let newAnswer = {
       answer: $('#answer-input').val().trim()
     };
-    $.post('/api/questions/' + id + '/answers', newAnswer) //This originally just had id instead of testid;
+    $.post('/api/questions/' + id + '/answers', newAnswer)
       .then(function (response) {
-        console.log(response);
         // create a new <li> and append it to the <ol> in questions.handlebars
         let newAnswer = $('<li>' + response.answer + '</li>');
-        $('#answer-list').append(newAnswer);
+        $($answerList).append(newAnswer);
         $('#answer-input').val('');
       });
   });
 
-  // When a question is clicked from the "Unanswered Questions" or "Answered Questions" panels
+  // When a question is clicked from the "All Questions" panel
   $('a.panel-block').on('click', function (event) {
     event.preventDefault();
     // remove the <li>s from the <ol> in "Answers"
-    $('#answer-list').empty();
-    let id = $(this).data('id');
-    let $title = $('#display-question-title');
-    let $content = $('#display-question-content');
-    let $created = $('#display-createdAt');
+    $($answerList).empty();
+    // get the data-id from questions.handlebars
+    let id = $(this).attr('data-id');
     // add a data-id attribute to the submit button in the answer form
-    $('#answer-add').attr('data-id', id);
+    $($answerBtn).attr('data-id', id);
 
-    $.get('/api/all')
-      .then(function (questions) {
-        // compare the id of the questions table with the id of the question that was clicked
-        for (let i = 0; i < questions.length; i++) {
-          if (questions[i].id === id) {
-            $title.text(questions[i].title);
-            $content.text(questions[i].question);
-            // $created.text(questions[i].createdAt);
-            $created.text(moment.utc(questions[i].createdAt).local().format('LLL'));
-            console.log($title.text());
-            console.log($content.text());
-            localStorage.setItem('title', $title.text());
-            localStorage.setItem('content', $content.text());
-            localStorage.setItem('created', $created.text());
-          }
-        }
-      });
+    // Render the questions and answers to the browser
     $.get('/api/questions/' + id + '/answers')
-      .then(function (questions) {
-        let lastQuestion = questions[0].Answers;
-        console.log(lastQuestion);
-        let lastAnswer = lastQuestion.slice(-5);
-        lastAnswer.forEach((answer) => {
+      .then(function (response) {
+        // render the question details
+        $title.text(response[0].title);
+        $content.text(response[0].question);
+        $username.text('Posted by: ' + response[0].username);
+        $created.text(response[0].createdAt);
+        // $created.text(moment.utc(response[i].createdAt.local().format('LLL')));
+
+        // set the Question's id to local storage to use when page reloads
+        localStorage.setItem('questionId', response[0].id);
+        // I changed this index to just 0 since there will only ever be one item in the array
+        let answers = response[0].Answers;
+        // grabs only the last 5 answers from the Answers object
+        let recentAnswers = answers.slice(-5);
+        // render a new <li> for each recent answer
+        recentAnswers.forEach((answer) => {
           let newli = $('<li>').text(answer.answer);
-          $('#answer-list').append(newli);
+          $($answerList).append(newli);
         });
       });
   });
 });
-
