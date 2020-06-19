@@ -1,26 +1,27 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a class="navbar-item" href="/index">
-            <img src="/assets/img/AskingForAFriend_Nav.png" width="175" height="75">
-        </a>
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/index">
+      <img src="/assets/img/AskingForAFriend_Nav.png" width="175" height="75">
+    </a>
 
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
-    </div>
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-end">
-            <div class="navbar-item">
-                <div class="buttons">
-                    <a class="button is-small is-light" href="/index"><strong>Home</strong></a>
-                    <a class="button is-small is-light" href="/logout"><strong>Logout</strong></a>
-                </div>
-            </div>
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-small is-light" href="/index"><strong>Home</strong></a>
+          <a class="button is-small is-light" href="/logout"><strong>Logout</strong></a>
         </div>
+      </div>
     </div>
+  </div>
 </nav>
 <!--Navbar End-->
 <section id="questions-main" class="section">
@@ -29,7 +30,7 @@
       <!--Ask New Question -->
       <article class="panel">
         <p class="panel-heading">
-          Ask a new Question!
+          Ask a new question!
         </p>
         <div class="panel-block">
           <div class="control">
@@ -41,14 +42,14 @@
           </div>
         </div>
       </article>
-      <!--Unanswered Questions-->
+      <!--All Questions-->
       <article class="panel">
         <p class="panel-heading">
           All Questions
         </p>
         <ul id="question-list">
-        {{#each questions}}
-        {{#unless answer}}
+          {{#each questions}}
+          {{#unless answer}}
           <li>
             <a class="panel-block" data-id="{{ id }}">
               <span class="panel-icon">
@@ -57,8 +58,8 @@
               {{ title }}
             </a>
           </li>
-        {{/unless}}
-        {{/each}}
+          {{/unless}}
+          {{/each}}
         </ul>
       </article>
     </div>
@@ -69,7 +70,11 @@
         <div id="display-question">
           <h4 id="display-question-title"></h4>
           <p id="display-question-content"></p>
-          <p id="display-createdAt" class="content is-small mt-3"></p>
+          <div id="question-details">
+            <span id="display-username" class="content is-small mt-3"></span>
+            <span id="display-createdAt" class="content is-small mt-3"></span>
+          </div>
+
         </div>
         <hr>
         <!--Display the answers to the clicked question-->

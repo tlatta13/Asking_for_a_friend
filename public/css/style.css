@@ -10,6 +10,7 @@ body {
 .tagline {
     font-family: 'Quicksand', sans-serif;
     font-weight: 400;
+    font-size: 1.5rem;
 }
 
 #login,
@@ -75,6 +76,10 @@ body {
 
 #display-createdAt {
     font-family: 'Quicksand', sans-serif;
+}
+
+#question-details {
+    margin-top: .75em;
 }
 
 #answer-list {
