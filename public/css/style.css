@@ -69,6 +69,12 @@ body {
     font-weight: 500;
 }
 
+#welcome-user {
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
 #display-question-content {
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
